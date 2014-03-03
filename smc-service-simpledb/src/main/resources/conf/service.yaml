@@ -1,0 +1,12 @@
+# HTTP-specific options.
+
+http:
+  serviceName:  simpledb
+  desc: a simple database of framework.
+  staticRoot: ${server_resources}/web
+  port: 8080
+  adminPort:  9090
+
+
+
+

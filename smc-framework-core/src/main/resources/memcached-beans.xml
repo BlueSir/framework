@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean name="user_pool" class="com.sohu.smc.common.lifecycle.SpyMemcachedBean">
+        <property name="masterAddress"
+                  value="10.13.81.61:50001,10.13.81.61:50002,10.13.81.87:50001,10.13.81.87:50002,10.13.81.90:50001,10.13.81.90:50002"/>
+        <property name="slaveAddress"
+                  value="10.13.81.88:50001,10.13.81.88:50002,10.13.81.89:50001,10.13.81.89:50002,10.13.81.129:50001,10.13.81.129:50002"/>
+        <property name="failover" value="true"/>
+        <property name="zkConn" value="2"/>
+    </bean>
+
+    <bean name="news_pool" class="com.sohu.smc.common.lifecycle.SpyMemcachedBean">
+        <property name="masterAddress"
+                  value="10.13.81.89:30002,10.13.81.89:30003,10.13.81.90:30002,10.13.81.90:30003,10.13.81.173:30002,10.13.81.173:30003"/>
+        <property name="zkConn" value="1"/>
+    </bean>
+
+</beans>

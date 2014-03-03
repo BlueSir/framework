@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>日志统计分析</title>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8”>
+    <script type="text/javascript" src="jquery1.8.3.js"></script>
+    <script type="text/javascript" src="jquery.date_input.js"></script>
+    <link rel="stylesheet" href="date_input.css" type="text/css">
+    <script type="text/javascript">
+        jQuery.extend(DateInput.DEFAULT_OPTS, {
+            month_names: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+            short_month_names: ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二"],
+            short_day_names: ["一", "二", "三", "四", "五", "六", "日"],
+            dateToString: function(date) {
+                var month = (date.getMonth() + 1).toString();
+                var dom = date.getDate().toString();
+                if (month.length == 1) month = "0" + month;
+                if (dom.length == 1) dom = "0" + dom;
+                return date.getFullYear() + "-" + month + "-" + dom;
+            }
+
+        });
+
+        $(function() {
+            $("#start_date").date_input();
+            $("#end_date").date_input();
+        });
+    </script>
+</head>
+<body>
+    起始日期：<input type="text" id="start_date" name="start_date"/>  &nbsp;&nbsp;—&nbsp;&nbsp;
+    结束日期：<input type="text" id="end_date" name="end_date"/>
+
+    <div id="filter" style="margin-top : 20px; padding-left: 20px; border : solid 1px;">
+        <p>过滤条件：</p>
+        平台<select name="filter">
+        </select>
+    </div>
+
+    <div id="group" style="margin-top : 20px; padding-left: 20px; border : solid 1px;">
+        <p>分组条件：</p>
+        平台<input type="checkbox" name="groupby" value="platform"/>
+        渠道<input type="checkbox" name="groupby" value="channelid"/>
+    </div>
+
+    <div id="result"></div>
+    <div id="table_chart"></div>
+    <div id="line_chart"></div>
+</body>
+</html>

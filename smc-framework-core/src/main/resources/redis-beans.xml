@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean name="user_pool" class="com.sohu.smc.common.lifecycle.JedisBean">
+        <property name="masterAddress" value="10.13.81.87:6379"/>
+        <property name="slaveAddress" value="10.13.81.90:6379"/>
+        <property name="failover" value="true"/>
+        <property name="zkConn" value="10.13.81.90:2181,10.13.81.74:2181,10.10.76.41:2181"/>
+    </bean>
+
+    <bean name="common_redis_pool" class="com.sohu.smc.common.lifecycle.JedisBean">
+        <!--todo 没有区分主从-->
+        <property name="masterAddress" value="10.13.81.125:6379"/>
+        <property name="failover" value="false"/>
+    </bean>
+
+</beans>
